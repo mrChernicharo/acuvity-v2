@@ -21,4 +21,5 @@ function createUsers(userCount = 20) {
 
 createUsers();
 
+console.log({ USERS_DICT, USERS });
 export { USERS, USERS_DICT };

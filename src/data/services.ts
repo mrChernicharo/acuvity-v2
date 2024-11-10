@@ -344,6 +344,6 @@ SERVICES.forEach((service) => {
   SERVICES_DICT.set(service.id, service);
 });
 
-console.log(SERVICES);
+console.log({ SERVICES, SERVICES_DICT });
 
 export { SERVICES, SERVICES_DICT };
