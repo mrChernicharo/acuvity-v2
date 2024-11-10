@@ -3,10 +3,12 @@
 // import { getUserData } from "./api/getUserData";
 // import { getInteractions } from "./api/getInteractions";
 
-import { ThemeToggle } from "./components/molecules/theme-toggle";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
+import { ThemeToggle } from "../molecules/theme-toggle";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
+import { ServicesView } from "./services";
+import { UsersView } from "./users";
 
-function App() {
+function RootView() {
   // const [userId, setUserId] = useState(1);
   // const [serviceId, setServiceId] = useState(1);
   // const [limit, setLimit] = useState(3);
@@ -60,11 +62,15 @@ function App() {
           <TabsTrigger value="users">Users</TabsTrigger>
           <TabsTrigger value="services">Services</TabsTrigger>
         </TabsList>
-        <TabsContent value="users">Make changes to your account here.</TabsContent>
-        <TabsContent value="services">Change your password here.</TabsContent>
+        <TabsContent value="users">
+          <UsersView />
+        </TabsContent>
+        <TabsContent value="services">
+          <ServicesView />
+        </TabsContent>
       </Tabs>
     </div>
   );
 }
 
-export default App;
+export { RootView };
