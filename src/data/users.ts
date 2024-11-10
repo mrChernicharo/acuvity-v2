@@ -1,19 +1,24 @@
+import { faker } from "@faker-js/faker";
 import { User } from "../utils/types";
 
-const USERS: User[] = [
-  { id: 1, name: "Tom Capone", company: "Genesys" },
-  { id: 2, name: "Marjory Cohen", company: "Google" },
-  { id: 3, name: "Xi Xiaozheng", company: "Meta" },
-  { id: 4, name: "Ali Al Salah", company: "Emirates" },
-  { id: 5, name: "Maria Torres", company: "Doordash" },
-  { id: 6, name: "Paco Rojas", company: "Uber" },
-  { id: 7, name: "Linda Goldberg", company: "Netlify" },
-  { id: 8, name: "Rolando Bastos", company: "Microsoft" },
-];
+const USERS: User[] = [];
+const USERS_DICT = new Map<number, User>();
 
-const USERS_DICT = new Map();
-USERS.forEach((user) => {
-  USERS_DICT.set(user.id, user);
-});
+function createUsers(userCount = 20) {
+  let i = 0;
+  while (i < userCount) {
+    const user: User = {
+      id: i + 1,
+      name: faker.person.fullName(),
+      company: faker.company.name(),
+    };
+
+    USERS.push(user);
+    USERS_DICT.set(user.id, user);
+    i++;
+  }
+}
+
+createUsers();
 
 export { USERS, USERS_DICT };

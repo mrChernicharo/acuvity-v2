@@ -7,7 +7,7 @@ import { USERS } from "./users";
 const INTERACTIONS: Interaction[] = [];
 const INTERACTIONS_DICT: Map<number, Interaction> = new Map();
 
-function createInteractions(interactionCount = 200) {
+function createInteractions(interactionCount = 1000) {
   const totalInteractions = interactionCount;
   while (interactionCount > 0) {
     const id = totalInteractions - interactionCount;

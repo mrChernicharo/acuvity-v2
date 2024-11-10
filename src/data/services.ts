@@ -135,20 +135,6 @@ const SERVICES: Service[] = [
     release_date: 2009,
   },
   {
-    company: "Duolingo",
-    name: "Duolingo App",
-    category: "Education",
-    description: "AI-powered language learning app.",
-    release_date: 2012,
-  },
-  {
-    company: "Coursera",
-    name: "Coursera Platform",
-    category: "Education",
-    description: "AI-powered online learning platform.",
-    release_date: 2012,
-  },
-  {
     company: "OpenAI",
     name: "ChatGPT",
     category: "Language Model",
@@ -163,7 +149,7 @@ const SERVICES: Service[] = [
     release_date: 2023,
   },
   {
-    company: "Meta AI",
+    company: "Meta",
     name: "LLaMA",
     category: "Language Model",
     description: "A large language model designed for research purposes.",
@@ -226,62 +212,6 @@ const SERVICES: Service[] = [
     release_date: 2016,
   },
   {
-    company: "Uber",
-    name: "Uber AI Labs",
-    category: "AI for Transportation",
-    description: "AI research lab focused on improving transportation and logistics.",
-    release_date: 2016,
-  },
-  {
-    company: "Lyft",
-    name: "Lyft Level 5",
-    category: "AI for Transportation",
-    description: "AI research and development for autonomous vehicles.",
-    release_date: 2017,
-  },
-  {
-    company: "Tesla",
-    name: "Autopilot",
-    category: "AI for Automotive",
-    description: "Advanced driver-assistance system using AI.",
-    release_date: 2014,
-  },
-  {
-    company: "Waymo",
-    name: "Waymo Driver",
-    category: "AI for Automotive",
-    description: "Self-driving technology developed by Alphabet's Waymo.",
-    release_date: 2009,
-  },
-  {
-    company: "Cruise",
-    name: "Cruise Origin",
-    category: "AI for Automotive",
-    description: "Self-driving electric vehicle developed by General Motors' Cruise.",
-    release_date: 2018,
-  },
-  {
-    company: "Pinterest",
-    name: "Lens",
-    category: "Image Recognition",
-    description: "Visual search tool that allows users to find similar items based on images.",
-    release_date: 2017,
-  },
-  {
-    company: "Spotify",
-    name: "Discover Weekly",
-    category: "Recommendation System",
-    description: "AI-powered playlist that suggests new music based on user preferences.",
-    release_date: 2015,
-  },
-  {
-    company: "Netflix",
-    name: "Recommendation System",
-    category: "Recommendation System",
-    description: "AI-powered system that suggests movies and TV shows based on user viewing history.",
-    release_date: 2006,
-  },
-  {
     company: "Amazon",
     name: "Alexa",
     category: "Virtual Assistant",
@@ -294,13 +224,6 @@ const SERVICES: Service[] = [
     description: "AI pair programmer that suggests code completions in real-time.",
     company: "GitHub",
     release_date: 2021,
-  },
-  {
-    name: "Tabnine",
-    category: "Code Completion",
-    description: "AI-powered code completion tool that supports various programming languages.",
-    company: "Tabnine",
-    release_date: 2012,
   },
   {
     name: "Midjourney",
@@ -352,34 +275,6 @@ const SERVICES: Service[] = [
     release_date: 2023,
   },
   {
-    name: "Replit",
-    category: "Online IDE",
-    description: "AI-powered online IDE for coding and collaboration.",
-    company: "Replit",
-    release_date: 2016,
-  },
-  {
-    name: "Figma",
-    category: "Design Tool",
-    description: "AI-powered design tool for UI/UX design and prototyping.",
-    company: "Figma",
-    release_date: 2016,
-  },
-  {
-    name: "Adobe Firefly",
-    category: "Generative AI",
-    description: "AI-powered creative tool for generating images, text, and videos.",
-    company: "Adobe",
-    release_date: 2023,
-  },
-  {
-    name: "Jasper.ai",
-    category: "AI Writing Assistant",
-    description: "AI-powered writing assistant for content creation.",
-    company: "Jasper.ai",
-    release_date: 2021,
-  },
-  {
     name: "Grammarly",
     category: "AI Writing Assistant",
     description: "AI-powered writing assistant for grammar, spelling, and style.",
@@ -422,13 +317,6 @@ const SERVICES: Service[] = [
     release_date: 2016,
   },
   {
-    name: "Kaggle",
-    category: "Data Science Platform",
-    description: "Platform for data science competitions and collaboration.",
-    company: "Alphabet Inc.",
-    release_date: 2010,
-  },
-  {
     name: "Google Cloud Vertex AI",
     category: "Machine Learning Platform",
     description: "End-to-end platform for building and deploying machine learning models.",
@@ -439,7 +327,7 @@ const SERVICES: Service[] = [
     name: "Amazon SageMaker",
     category: "Machine Learning Platform",
     description: "Fully managed platform for building, training, and deploying machine learning models.",
-    company: "Amazon Web Services",
+    company: "Amazon Web Services (AWS)",
     release_date: 2017,
   },
   {
@@ -451,9 +339,11 @@ const SERVICES: Service[] = [
   },
 ].map((svc, i) => ({ id: i, ...svc }));
 
-const SERVICES_DICT = new Map();
+const SERVICES_DICT = new Map<number, Service>();
 SERVICES.forEach((service) => {
   SERVICES_DICT.set(service.id, service);
 });
+
+console.log(SERVICES);
 
 export { SERVICES, SERVICES_DICT };
