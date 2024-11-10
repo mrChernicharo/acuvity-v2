@@ -15,7 +15,10 @@ export function getInteractions(userId: number, serviceId: number, limit = 3, of
   );
 
   const paginatedInteractions = groupArray(interactions, limit);
-  const payload = paginatedInteractions?.[offset] ?? [];
+  const payload = {
+    interactions: paginatedInteractions?.[offset] ?? [],
+    pageCount: Math.ceil(interactions.length / limit),
+  };
 
   return { error: null, payload };
 }
