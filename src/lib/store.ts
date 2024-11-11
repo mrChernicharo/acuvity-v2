@@ -4,15 +4,17 @@ import { User, Service } from "@/utils/types";
 import { create } from "zustand";
 
 interface AppStore {
-  users: User[];
-  services: Service[];
-  addUsers: (users: User[]) => void;
-  addServices: (services: Service[]) => void;
+  users: (User & { interactionCount: number })[];
+  services: (Service & { interactionCount: number })[];
+  addUsers: (users: (User & { interactionCount: number })[]) => void;
+  addServices: (services: (Service & { interactionCount: number })[]) => void;
 }
 
 export const useAppStore = create<AppStore>()((set) => ({
   users: getUsers(4, 0),
   services: getServices(4, 0),
-  addUsers: (users: User[]) => set((state) => ({ ...state, users: [...state.users, ...users] })),
-  addServices: (services: Service[]) => set((state) => ({ ...state, services: [...state.services, ...services] })),
+  addUsers: (users: (User & { interactionCount: number })[]) =>
+    set((state) => ({ ...state, users: [...state.users, ...users] })),
+  addServices: (services: (Service & { interactionCount: number })[]) =>
+    set((state) => ({ ...state, services: [...state.services, ...services] })),
 }));

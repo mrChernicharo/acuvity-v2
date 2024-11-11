@@ -20,14 +20,15 @@ function createInteractions(interactionCount = 1000) {
 
   const totalInteractions = interactionCount;
   while (interactionCount > 0) {
+    interactionCount--;
+    const randSkip = getRandomInt(1, 10);
+    if (randSkip < 4) continue;
+
     const id = totalInteractions - interactionCount;
     const { user, services } = servicesByUser[interactionCount % USERS.length];
 
     const randIdx = getRandomInt(0, services.length - 1);
     const pickedService = services[randIdx];
-
-    if (!pickedService || !user) continue;
-
     const timestamp = faker.date.recent({ days: 150 }).getTime();
     const prompts = Array(getRandomInt(1, 10))
       .fill(0)
@@ -39,10 +40,8 @@ function createInteractions(interactionCount = 1000) {
       .sort((a, b) => b.timestamp - a.timestamp);
 
     const interaction: Interaction = { id, userId: user.id, serviceId: pickedService.id, prompts };
-
     INTERACTIONS.push(interaction);
     INTERACTIONS_DICT.set(id, interaction);
-    interactionCount--;
   }
 }
 

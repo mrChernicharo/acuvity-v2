@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
-import { RootView } from "./components/views/Root";
-import { UserView } from "./components/views/user";
-import { InteractionsView } from "./components/views/interactions";
-import { ServiceView } from "./components/views/service";
+import { RootView } from "./components/views/root.view";
+import { UserView } from "./components/views/user.view";
+import { InteractionsView } from "./components/views/interactions.view";
+import { ServiceView } from "./components/views/service.view";
 
 export const appRouter = createBrowserRouter([
   {

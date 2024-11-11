@@ -1,8 +1,8 @@
 import { useSearchParams } from "react-router-dom";
 import { ThemeToggle } from "../molecules/theme-toggle";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
-import { ServicesView } from "./services";
-import { UsersView } from "./users";
+import { ServicesView } from "./services.view";
+import { UsersView } from "./users.view";
 
 function RootView() {
   const [params, setParams] = useSearchParams();

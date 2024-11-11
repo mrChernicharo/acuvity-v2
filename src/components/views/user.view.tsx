@@ -1,7 +1,7 @@
 import { getUserData } from "@/api/getUserData";
 import { USERS_DICT } from "@/api/data/users";
 import { useNavigate, useParams } from "react-router-dom";
-import { LazyImage } from "../atoms/lazy-img";
+import { Avatar } from "../atoms/avatar";
 
 export function UserView() {
   const { id } = useParams();
@@ -34,7 +34,7 @@ export function UserView() {
             }}
           >
             <div>
-              <LazyImage src={service.imageUrl} width={120} height={80} />
+              <Avatar src={service.imageUrl} />
             </div>
             <div>{service.name}</div>
             <div>{service.release_date}</div>
