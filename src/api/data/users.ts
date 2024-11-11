@@ -11,7 +11,7 @@ function createUsers(userCount = 20) {
       id: i + 1,
       name: faker.person.fullName(),
       company: faker.company.name(),
-      imageUrl: faker.image.avatarGitHub(),
+      imageUrl: faker.image.avatar(),
     };
 
     USERS.push(user);

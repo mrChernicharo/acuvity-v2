@@ -338,7 +338,7 @@ const SERVICES: Service[] = [
     company: "OpenAI",
     release_date: 2016,
   },
-].map((svc, i) => ({ id: i, imageUrl: faker.image.urlLoremFlickr({ category: "company" }), ...svc }));
+].map((svc, i) => ({ id: i + 1, imageUrl: faker.image.urlPicsumPhotos({ width: 120, height: 80 }), ...svc }));
 
 const SERVICES_DICT = new Map<number, Service>();
 SERVICES.forEach((service) => {
