@@ -34,12 +34,19 @@ function createInteractions(interactionCount = 1000) {
       .fill(0)
       .map((_, i) => ({
         input: faker.lorem.lines({ min: 1, max: 2 }),
-        output: faker.lorem.lines({ min: 1, max: 4 }),
+        output: faker.lorem.paragraphs({ min: 1, max: 4 }),
         timestamp: timestamp + i * getRandomInt(1000, 120_000),
       }))
-      .sort((a, b) => b.timestamp - a.timestamp);
+      .sort((a, b) => a.timestamp - b.timestamp);
 
-    const interaction: Interaction = { id, userId: user.id, serviceId: pickedService.id, prompts };
+    const interaction: Interaction = {
+      id,
+      userId: user.id,
+      serviceId: pickedService.id,
+      prompts,
+      subject: `${faker.hacker.ingverb()} ${faker.hacker.noun()}`,
+      confidence: faker.number.float({ min: 0.35, max: 0.99 }),
+    };
     INTERACTIONS.push(interaction);
     INTERACTIONS_DICT.set(id, interaction);
   }

@@ -1,18 +1,23 @@
 import { Service } from "@/utils/types";
 import { LiaIndustrySolid } from "react-icons/lia";
-import { useNavigate } from "react-router-dom";
 import { Avatar } from "../atoms/avatar";
 import { BsChatRightText } from "react-icons/bs";
+import { cn } from "@/lib/utils";
 
-export function ServiceListItem({ service }: { service: Service & { interactionCount: number } }) {
-  const navigate = useNavigate();
+export function ServiceListItem({
+  service,
+  interactionCount,
+  onClick,
+}: {
+  service: Service;
+  interactionCount?: number;
+  onClick?: () => void;
+}) {
   return (
     <li
       key={service.id}
-      className="p-2 flex flex-row gap-2 cursor-pointer hover:bg-muted"
-      onClick={() => {
-        navigate(`service/${service.id}`);
-      }}
+      className={cn("p-2 flex flex-row gap-2", onClick && "cursor-pointer hover:bg-muted")}
+      onClick={onClick}
     >
       <Avatar src={service.imageUrl} />
 
@@ -28,10 +33,12 @@ export function ServiceListItem({ service }: { service: Service & { interactionC
         </div>
       </div>
 
-      <div className="flex flex-row items-center gap-1">
-        <BsChatRightText />
-        <span>{service.interactionCount}</span>
-      </div>
+      {Number.isInteger(interactionCount) && (
+        <div className="flex flex-row items-center gap-1">
+          <BsChatRightText />
+          <span>{interactionCount}</span>
+        </div>
+      )}
     </li>
   );
 }

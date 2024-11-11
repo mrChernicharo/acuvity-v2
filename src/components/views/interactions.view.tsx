@@ -5,7 +5,10 @@ import { Button } from "../ui/button";
 import { Interaction } from "@/utils/types";
 import { SERVICES_DICT } from "@/api/data/services";
 import { USERS_DICT } from "@/api/data/users";
-import { dateIntl } from "@/utils/helperFns";
+import { UserListItem } from "../molecules/user-list-item";
+import { ServiceListItem } from "../molecules/service-list-item";
+import { InteractionItem } from "../molecules/interaction-item";
+import { Accordion } from "../ui/accordion";
 
 const limit = 2;
 
@@ -30,30 +33,21 @@ export function InteractionsView() {
     setInteractions((prev) => [...prev, ...(payload.interactions || [])]);
   }, [offset, serviceId, userId]);
 
+  if (!user || !service) return null;
+
   return (
     <div>
-      <div>
-        {user?.name} {service?.name}
+      <h1>Interactions</h1>
+      <div className="flex flex-row">
+        <UserListItem user={user} />
+        <ServiceListItem service={service} />
       </div>
-      <div>Interactions</div>
 
-      {interactions.map((interaction, i) => (
-        <div key={interaction.id}>
-          <div>{i}</div>
-          <ul>
-            {interaction.prompts.map(({ input, output, timestamp }, j) => (
-              <li key={`${i}-${j}`}>
-                <div>{input}</div>
-                <div>{output}</div>
-                <div>{dateIntl.format(timestamp)}</div>
-              </li>
-            ))}
-          </ul>
-          {/* <div>{interaction.prompt}</div>
-          <div>{interaction.output}</div> */}
-        </div>
-      ))}
-
+      <Accordion className="p-6 w-screen" type="multiple">
+        {interactions.map((interaction, i) => (
+          <InteractionItem key={`${i}`} interaction={interaction} />
+        ))}
+      </Accordion>
       <Button
         onClick={() => {
           loadData();

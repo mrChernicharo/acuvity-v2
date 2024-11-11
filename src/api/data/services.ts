@@ -234,20 +234,6 @@ const SERVICES: Service[] = [
     release_date: 2022,
   },
   {
-    name: "Stable Diffusion",
-    category: "Image Generation",
-    description: "Open-source text-to-image model.",
-    company: "Stability AI",
-    release_date: 2022,
-  },
-  {
-    name: "DALL-E 2",
-    category: "Image Generation",
-    description: "AI system that creates realistic images and art from a description in natural language.",
-    company: "OpenAI",
-    release_date: 2022,
-  },
-  {
     name: "Google AutoML",
     category: "AutoML Platform",
     description: "Platform that automates the process of building and deploying machine learning models.",
@@ -260,20 +246,6 @@ const SERVICES: Service[] = [
     description: "Cloud-based platform for building, training, and deploying machine learning models.",
     company: "Microsoft Azure",
     release_date: 2015,
-  },
-  {
-    name: "ChatGPT",
-    category: "Language Model",
-    description: "Conversational AI capable of generating human-quality text.",
-    company: "OpenAI",
-    release_date: 2022,
-  },
-  {
-    name: "Bard",
-    category: "Language Model",
-    description: "Google's experimental conversational AI.",
-    company: "Google AI",
-    release_date: 2023,
   },
   {
     name: "Grammarly",

@@ -1,6 +1,9 @@
 import { getServiceData } from "@/api/getServiceData";
 import { SERVICES_DICT } from "@/api/data/services";
 import { useNavigate, useParams } from "react-router-dom";
+import { UserListItem } from "../molecules/user-list-item";
+import { Avatar } from "../atoms/avatar";
+import { LiaIndustrySolid } from "react-icons/lia";
 
 export function ServiceView() {
   const { id } = useParams();
@@ -19,21 +22,30 @@ export function ServiceView() {
   console.log({ userInteractions, payload });
 
   return (
-    <div>
-      <div>service {id}</div>
-      <div>{service?.name}</div>
-
-      {userInteractions.map(({ user, count }) => (
-        <div
-          id={String(user.id)}
-          key={user.id}
-          onClick={() => {
-            navigate(`/interactions?serviceId=${service.id}&userId=${user.id}`);
-          }}
-        >
-          {user.name} {count}
+    <div className="w-screen">
+      <div className="flex flex-row items-center gap-2">
+        <Avatar src={service.imageUrl} />
+        <div>
+          <h1>{service?.name}</h1>
+          <div className="flex flex-row items-center gap-1 text-muted-foreground">
+            <LiaIndustrySolid />
+            <span>{service.company}</span>
+          </div>
         </div>
-      ))}
+      </div>
+
+      <ul className="w-full">
+        {userInteractions.map(({ user, count }) => (
+          <UserListItem
+            key={user.id}
+            user={user}
+            interactionCount={count}
+            onClick={() => {
+              navigate(`/interactions?serviceId=${service.id}&userId=${user.id}`);
+            }}
+          />
+        ))}
+      </ul>
     </div>
   );
 }

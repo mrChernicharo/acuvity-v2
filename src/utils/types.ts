@@ -19,5 +19,7 @@ export interface Interaction {
   id: number;
   userId: number;
   serviceId: number;
+  confidence: number;
+  subject: string;
   prompts: { input: string; output: string; timestamp: number }[];
 }

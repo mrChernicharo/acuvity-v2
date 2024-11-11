@@ -2,9 +2,11 @@ import { getUsers } from "@/api/getUsers";
 import { useAppStore } from "@/lib/store";
 import { Button } from "../ui/button";
 import { UserListItem } from "../molecules/user-list-item";
+import { useNavigate } from "react-router-dom";
 
 const limit = 4;
 export function UsersView() {
+  const navigate = useNavigate();
   const { users, addUsers } = useAppStore();
 
   return (
@@ -13,7 +15,13 @@ export function UsersView() {
 
       <ul className="w-full">
         {users.map((user) => (
-          <UserListItem key={user.id} user={user} />
+          <UserListItem
+            key={user.id}
+            user={user}
+            onClick={() => {
+              navigate(`user/${user.id}`);
+            }}
+          />
         ))}
       </ul>
 

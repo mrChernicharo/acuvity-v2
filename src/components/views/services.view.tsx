@@ -2,9 +2,11 @@ import { getServices } from "@/api/getServices";
 import { useAppStore } from "@/lib/store";
 import { ServiceListItem } from "../molecules/service-list-item";
 import { Button } from "../ui/button";
+import { useNavigate } from "react-router-dom";
 
 const limit = 4;
 export function ServicesView() {
+  const navigate = useNavigate();
   const { services, addServices } = useAppStore();
 
   return (
@@ -13,7 +15,13 @@ export function ServicesView() {
 
       <ul className="w-full">
         {services.map((service) => (
-          <ServiceListItem key={service.id} service={service} />
+          <ServiceListItem
+            key={service.id}
+            service={service}
+            onClick={() => {
+              navigate(`service/${service.id}`);
+            }}
+          />
         ))}
       </ul>
 

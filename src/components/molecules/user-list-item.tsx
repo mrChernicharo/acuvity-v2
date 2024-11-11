@@ -1,18 +1,24 @@
 import { User } from "@/utils/types";
 import { BsChatRightText } from "react-icons/bs";
 import { LiaIndustrySolid } from "react-icons/lia";
-import { useNavigate } from "react-router-dom";
-import { Avatar } from "../atoms/avatar";
 
-export function UserListItem({ user }: { user: User & { interactionCount: number } }) {
-  const navigate = useNavigate();
+import { Avatar } from "../atoms/avatar";
+import { cn } from "@/lib/utils";
+
+export function UserListItem({
+  user,
+  interactionCount,
+  onClick,
+}: {
+  user: User;
+  interactionCount?: number;
+  onClick?: () => void;
+}) {
   return (
     <li
       key={user.id}
-      className="p-2 flex flex-row gap-2 cursor-pointer hover:bg-muted"
-      onClick={() => {
-        navigate(`user/${user.id}`);
-      }}
+      className={cn("p-2 flex flex-row gap-2", onClick && "cursor-pointer hover:bg-muted")}
+      onClick={onClick}
     >
       <Avatar src={user.imageUrl} />
 
@@ -28,10 +34,12 @@ export function UserListItem({ user }: { user: User & { interactionCount: number
         </div>
       </div>
 
-      <div className="flex flex-row items-center gap-1">
-        <BsChatRightText />
-        <span>{user.interactionCount}</span>
-      </div>
+      {Number.isInteger(interactionCount) && (
+        <div className="flex flex-row items-center gap-1">
+          <BsChatRightText />
+          <span>{interactionCount}</span>
+        </div>
+      )}
     </li>
   );
 }
