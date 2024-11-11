@@ -1,10 +1,11 @@
 import { getInteractions } from "@/api/getInteractions";
-import { SERVICES_DICT } from "@/data/services";
-import { USERS_DICT } from "@/data/users";
 import { useCallback, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Button } from "../ui/button";
 import { Interaction } from "@/utils/types";
+import { SERVICES_DICT } from "@/api/data/services";
+import { USERS_DICT } from "@/api/data/users";
+import { dateIntl } from "@/utils/helperFns";
 
 const limit = 2;
 
@@ -21,8 +22,6 @@ export function InteractionsView() {
   const user = USERS_DICT.get(userId);
   const service = SERVICES_DICT.get(serviceId);
 
-  console.log({ userId, serviceId, offset });
-
   const loadData = useCallback(() => {
     setOffset((prev) => prev + 1);
     const { error, payload } = getInteractions(userId, serviceId, limit, offset);
@@ -33,14 +32,25 @@ export function InteractionsView() {
 
   return (
     <div>
-      <div>{user?.name}</div>
+      <div>
+        {user?.name} {service?.name}
+      </div>
       <div>Interactions</div>
 
-      {interactions.map((interaction) => (
+      {interactions.map((interaction, i) => (
         <div key={interaction.id}>
-          <div>{service?.name}</div>
-
-          <div>{interaction.timestamp}</div>
+          <div>{i}</div>
+          <ul>
+            {interaction.prompts.map(({ input, output, timestamp }, j) => (
+              <li key={`${i}-${j}`}>
+                <div>{input}</div>
+                <div>{output}</div>
+                <div>{dateIntl.format(timestamp)}</div>
+              </li>
+            ))}
+          </ul>
+          {/* <div>{interaction.prompt}</div>
+          <div>{interaction.output}</div> */}
         </div>
       ))}
 

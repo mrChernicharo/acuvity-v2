@@ -1,4 +1,5 @@
-import { Service } from "../utils/types";
+import { Service } from "@/utils/types";
+import { faker } from "@faker-js/faker";
 
 const SERVICES: Service[] = [
   {
@@ -337,7 +338,7 @@ const SERVICES: Service[] = [
     company: "OpenAI",
     release_date: 2016,
   },
-].map((svc, i) => ({ id: i, ...svc }));
+].map((svc, i) => ({ id: i, imageUrl: faker.image.urlLoremFlickr({ category: "company" }), ...svc }));
 
 const SERVICES_DICT = new Map<number, Service>();
 SERVICES.forEach((service) => {

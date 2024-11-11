@@ -21,3 +21,5 @@ export function groupArray<T>(array: T[], limit: number): T[][] {
 
   return result;
 }
+
+export const dateIntl = new Intl.DateTimeFormat("en", { dateStyle: "medium", timeStyle: "medium" });

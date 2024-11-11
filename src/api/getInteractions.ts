@@ -1,7 +1,7 @@
-import { INTERACTIONS } from "../data/interactions";
-import { SERVICES_DICT } from "../data/services";
-import { USERS_DICT } from "../data/users";
 import { groupArray } from "../utils/helperFns";
+import { INTERACTIONS } from "./data/interactions";
+import { SERVICES_DICT } from "./data/services";
+import { USERS_DICT } from "./data/users";
 
 export function getInteractions(userId: number, serviceId: number, limit = 3, offset = 0) {
   const user = USERS_DICT.get(userId);

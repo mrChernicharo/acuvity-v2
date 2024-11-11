@@ -1,5 +1,5 @@
+import { User } from "@/utils/types";
 import { faker } from "@faker-js/faker";
-import { User } from "../utils/types";
 
 const USERS: User[] = [];
 const USERS_DICT = new Map<number, User>();
@@ -11,6 +11,7 @@ function createUsers(userCount = 20) {
       id: i + 1,
       name: faker.person.fullName(),
       company: faker.company.name(),
+      imageUrl: faker.image.avatarGitHub(),
     };
 
     USERS.push(user);

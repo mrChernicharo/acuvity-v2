@@ -1,7 +1,7 @@
-import { INTERACTIONS } from "../data/interactions";
-import { SERVICES_DICT } from "../data/services";
-import { USERS_DICT } from "../data/users";
 import { User } from "../utils/types";
+import { INTERACTIONS } from "./data/interactions";
+import { SERVICES_DICT } from "./data/services";
+import { USERS_DICT } from "./data/users";
 
 export function getServiceData(serviceId: number) {
   const service = SERVICES_DICT.get(serviceId);

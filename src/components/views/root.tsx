@@ -1,17 +1,34 @@
+import { useSearchParams } from "react-router-dom";
 import { ThemeToggle } from "../molecules/theme-toggle";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import { ServicesView } from "./services";
 import { UsersView } from "./users";
 
 function RootView() {
+  const [params, setParams] = useSearchParams();
+
   return (
     <div className="bg-background text-foreground">
       <ThemeToggle />
 
-      <Tabs defaultValue="users" className="w-[400px]">
+      <Tabs defaultValue={params.get("view") ?? "users"} className="w-[400px]">
         <TabsList>
-          <TabsTrigger value="users">Users</TabsTrigger>
-          <TabsTrigger value="services">Services</TabsTrigger>
+          <TabsTrigger
+            value="users"
+            onClick={() => {
+              setParams({ view: "users" });
+            }}
+          >
+            Users
+          </TabsTrigger>
+          <TabsTrigger
+            value="services"
+            onClick={() => {
+              setParams({ view: "services" });
+            }}
+          >
+            Services
+          </TabsTrigger>
         </TabsList>
         <TabsContent value="users">
           <UsersView />

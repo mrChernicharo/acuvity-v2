@@ -2,6 +2,7 @@ export interface User {
   id: number;
   name: string;
   company: string;
+  imageUrl: string;
 }
 
 export interface Service {
@@ -11,13 +12,12 @@ export interface Service {
   category: string;
   release_date: number;
   description: string;
+  imageUrl: string;
 }
 
 export interface Interaction {
   id: number;
   userId: number;
   serviceId: number;
-  timestamp: number;
-  prompt: string;
-  output: string;
+  prompts: { input: string; output: string; timestamp: number }[];
 }

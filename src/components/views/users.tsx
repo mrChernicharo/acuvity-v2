@@ -1,4 +1,3 @@
-"use client";
 import { getUsers } from "@/api/getUsers";
 import { useAppStore } from "@/lib/store";
 import { Button } from "../ui/button";

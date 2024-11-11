@@ -1,5 +1,5 @@
 import { getUserData } from "@/api/getUserData";
-import { USERS_DICT } from "@/data/users";
+import { USERS_DICT } from "@/api/data/users";
 import { useNavigate, useParams } from "react-router-dom";
 
 export function UserView() {
